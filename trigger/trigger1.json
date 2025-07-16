@@ -1,0 +1,26 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"description": "schedule based trigger",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CopyPipeline_1d3",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2025-07-07T11:26:00",
+				"endTime": "2025-07-07T17:10:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

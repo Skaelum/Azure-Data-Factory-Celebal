@@ -1,0 +1,9 @@
+{
+	"name": "dfcelebal",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c58a8bfe-82a6-4764-a03d-1462efddfa2c",
+		"tenantId": "34bd8bed-2ac1-41ae-9f08-4e0a3f11706c"
+	}
+}

@@ -1,0 +1,141 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Test.csv",
+				"fileSystem": "sdcelebalw5"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Obj\u0001\u0004\u0014avro.codec\bnull\u0016avro.schema�\u0007{\"type\":\"record\"",
+				"type": "String"
+			},
+			{
+				"name": "\"name\":\"HybridDelivery.ClientLibraryJob\"",
+				"type": "String"
+			},
+			{
+				"name": "\"fields\":[{\"name\":\"AddressID\"",
+				"type": "String"
+			},
+			{
+				"name": "\"type\":[\"int\"",
+				"type": "String"
+			},
+			{
+				"name": "\"null\"]}4",
+				"type": "String"
+			},
+			{
+				"name": "{\"name\":\"AddressLine1\"",
+				"type": "String"
+			},
+			{
+				"name": "\"type\":[\"string\"6",
+				"type": "String"
+			},
+			{
+				"name": "\"null\"]}7",
+				"type": "String"
+			},
+			{
+				"name": "{\"name\":\"AddressLine2\"",
+				"type": "String"
+			},
+			{
+				"name": "\"type\":[\"string\"9",
+				"type": "String"
+			},
+			{
+				"name": "\"null\"]}10",
+				"type": "String"
+			},
+			{
+				"name": "{\"name\":\"City\"",
+				"type": "String"
+			},
+			{
+				"name": "\"type\":[\"string\"12",
+				"type": "String"
+			},
+			{
+				"name": "\"null\"]}13",
+				"type": "String"
+			},
+			{
+				"name": "{\"name\":\"StateProvince\"",
+				"type": "String"
+			},
+			{
+				"name": "\"type\":[\"string\"15",
+				"type": "String"
+			},
+			{
+				"name": "\"null\"]}16",
+				"type": "String"
+			},
+			{
+				"name": "{\"name\":\"CountryRegion\"",
+				"type": "String"
+			},
+			{
+				"name": "\"type\":[\"string\"18",
+				"type": "String"
+			},
+			{
+				"name": "\"null\"]}19",
+				"type": "String"
+			},
+			{
+				"name": "{\"name\":\"PostalCode\"",
+				"type": "String"
+			},
+			{
+				"name": "\"type\":[\"string\"21",
+				"type": "String"
+			},
+			{
+				"name": "\"null\"]}22",
+				"type": "String"
+			},
+			{
+				"name": "{\"name\":\"rowguid\"",
+				"type": "String"
+			},
+			{
+				"name": "\"type\":[\"string\"24",
+				"type": "String"
+			},
+			{
+				"name": "\"null\"]}25",
+				"type": "String"
+			},
+			{
+				"name": "{\"name\":\"ModifiedDate\"",
+				"type": "String"
+			},
+			{
+				"name": "\"type\":[\"string\"27",
+				"type": "String"
+			},
+			{
+				"name": "\"null\"]}]}\u0000Ȓ�\u001b�4�����\u0011?\u0013)�\u0007��\u0007\u0000\u0012\u0000\"8713 Yosemite Ct.\u0002\u0000\u000eBothell\u0000\u0014Washington\u0000\u001aUnited States\u0000",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

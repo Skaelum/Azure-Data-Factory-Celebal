@@ -1,0 +1,242 @@
+{
+	"name": "PL_ProcessAllFiles",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_RawFiles",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems\n",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "SW_FileType",
+							"type": "Switch",
+							"dependsOn": [],
+							"typeProperties": {
+								"on": {
+									"value": "switch(\n  true,\n  startsWith(item().name,'CUST_MSTR_'), 'CUST',\n  startsWith(item().name,'master_child_export-'), 'MASTER',\n  startsWith(item().name,'H_ECOM_ORDER'), 'ECOM',\n  'OTHER'\n)\n",
+									"type": "Expression"
+								},
+								"cases": [
+									{
+										"value": "CUST",
+										"activities": [
+											{
+												"name": "DF_CUST_MSTR",
+												"type": "ExecuteDataFlow",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"dataflow": {
+														"referenceName": "DF_CUST_MSTR",
+														"type": "DataFlowReference",
+														"parameters": {
+															"fileName": {
+																"value": "'@{$fileName}'",
+																"type": "Expression"
+															},
+															"folderPath": {
+																"value": "'@{$folderPath}'",
+																"type": "Expression"
+															}
+														},
+														"datasetParameters": {
+															"source1": {
+																"folderPath": {
+																	"value": "@$folderPath",
+																	"type": "Expression"
+																},
+																"fileName": {
+																	"value": "@$fileName\n",
+																	"type": "Expression"
+																}
+															}
+														}
+													},
+													"compute": {
+														"coreCount": 8,
+														"computeType": "General"
+													},
+													"traceLevel": "Fine"
+												}
+											}
+										]
+									},
+									{
+										"value": "MASTER",
+										"activities": [
+											{
+												"name": "DF_MasterChild",
+												"type": "ExecuteDataFlow",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [],
+												"typeProperties": {
+													"compute": {
+														"coreCount": 8,
+														"computeType": "General"
+													},
+													"traceLevel": "Fine"
+												}
+											}
+										]
+									},
+									{
+										"value": "ECOM",
+										"activities": [
+											{
+												"name": "COPY_H_ECOM",
+												"type": "Copy",
+												"dependsOn": [],
+												"policy": {
+													"timeout": "0.12:00:00",
+													"retry": 0,
+													"retryIntervalInSeconds": 30,
+													"secureOutput": false,
+													"secureInput": false
+												},
+												"userProperties": [
+													{
+														"name": ""
+													},
+													{
+														"name": "Source",
+														"value": "raw/H_ECOM_ORDER/"
+													}
+												],
+												"typeProperties": {
+													"source": {
+														"type": "DelimitedTextSource",
+														"storeSettings": {
+															"type": "AzureBlobFSReadSettings",
+															"recursive": true,
+															"enablePartitionDiscovery": false
+														},
+														"formatSettings": {
+															"type": "DelimitedTextReadSettings"
+														}
+													},
+													"sink": {
+														"type": "DelimitedTextSink",
+														"storeSettings": {
+															"type": "AzureBlobFSWriteSettings"
+														},
+														"formatSettings": {
+															"type": "DelimitedTextWriteSettings",
+															"quoteAllText": true,
+															"fileExtension": ".txt"
+														}
+													},
+													"enableStaging": false,
+													"translator": {
+														"type": "TabularTranslator",
+														"typeConversion": true,
+														"typeConversionSettings": {
+															"allowDataTruncation": true,
+															"treatBooleanAsNumber": false
+														}
+													}
+												},
+												"inputs": [
+													{
+														"referenceName": "DS_ECOM",
+														"type": "DatasetReference"
+													}
+												],
+												"outputs": [
+													{
+														"referenceName": "DelimitedText4",
+														"type": "DatasetReference"
+													}
+												]
+											}
+										]
+									}
+								],
+								"defaultActivities": [
+									{
+										"name": "Custom1",
+										"type": "Custom",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"referenceObjects": {
+												"linkedServices": [],
+												"datasets": []
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-07-16T13:08:15Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,20 @@
+{
+	"name": "Sftp1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Sftp",
+		"typeProperties": {
+			"host": "192.168.1.5",
+			"port": 22,
+			"skipHostKeyValidation": true,
+			"authenticationType": "Basic",
+			"userName": "admin",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJkNTc0MWNlNS03ZWJlLTRjYzAtYWVhOS01ZDdiM2QwYWY0MzciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "CWSHIR",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
