@@ -1,0 +1,81 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "dfcelebal"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureDataLakeStorage2_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"CFPSqlServer_password": {
+			"value": ""
+		},
+		"CPFDataLakeGen2_accountKey": {
+			"value": ""
+		},
+		"Sftp1_password": {
+			"value": ""
+		},
+		"SqlServer1_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://sdimportcelebalw5.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage2_properties_typeProperties_url": {
+			"value": "https://sdimportcelebalw5.dfs.core.windows.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "celebalw5.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "dbcelebalw5"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "Lohitaksh"
+		},
+		"CFPSqlServer_properties_typeProperties_server": {
+			"value": "localhost"
+		},
+		"CFPSqlServer_properties_typeProperties_database": {
+			"value": "Management"
+		},
+		"CFPSqlServer_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"CPFDataLakeGen2_properties_typeProperties_url": {
+			"value": "https://cpfstorage.dfs.core.windows.net/"
+		},
+		"Sftp1_properties_typeProperties_host": {
+			"value": "192.168.1.5"
+		},
+		"Sftp1_properties_typeProperties_userName": {
+			"value": "admin"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "localhost"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "BikeStores"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
