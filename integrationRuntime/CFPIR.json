@@ -1,0 +1,7 @@
+{
+	"name": "CFPIR",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Integration Runtime for Final Project "
+	}
+}
