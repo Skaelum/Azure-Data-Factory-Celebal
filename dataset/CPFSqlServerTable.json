@@ -32,7 +32,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Order"
+			"table": "Product"
 		}
 	}
 }
