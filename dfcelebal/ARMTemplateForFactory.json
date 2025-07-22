@@ -1135,7 +1135,7 @@
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "Inventory"
+					"table": "Order"
 				}
 			},
 			"dependsOn": [
@@ -1519,7 +1519,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "Inventory.csv",
+						"fileName": "Order.csv",
 						"fileSystem": "source"
 					},
 					"columnDelimiter": ",",
