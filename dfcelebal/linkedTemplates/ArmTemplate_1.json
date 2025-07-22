@@ -606,7 +606,7 @@
 				],
 				"typeProperties": {
 					"schema": "dbo",
-					"table": "Order"
+					"table": "Product"
 				}
 			},
 			"dependsOn": []
@@ -768,7 +768,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "Order.csv",
+						"fileName": "Product.csv",
 						"fileSystem": "source"
 					},
 					"columnDelimiter": ",",
